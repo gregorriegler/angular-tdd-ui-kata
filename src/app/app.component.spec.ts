@@ -38,4 +38,13 @@ describe('AppComponent', () => {
     expect(input.maxLength).toEqual(20);
   });
 
+  it('should contain "Log in" button in the bottom right corner of the window.', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const compiled = fixture.nativeElement;
+
+    let button = compiled.querySelector('[name="login"]');
+    expect(button).toBeTruthy();
+  });
+
+
 });
