@@ -33,7 +33,9 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const compiled = fixture.nativeElement;
 
-    expect(compiled.querySelector('[name="username"]')).toBeTruthy();
+    let input = compiled.querySelector('[name="username"]');
+    expect(input).toBeTruthy();
+    expect(input.maxLength).toEqual(20);
   });
 
 });
