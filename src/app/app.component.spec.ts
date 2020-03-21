@@ -1,13 +1,21 @@
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import {AuthenticationService} from "./authentication.service";
 
 describe('AppComponent', () => {
+  let authenticationServiceMock;
+
   beforeEach(async(() => {
+    authenticationServiceMock = jasmine.createSpyObj(['requestLogin']);
     TestBed.configureTestingModule({
       declarations: [
         AppComponent
       ],
+      providers: [
+        {provide: AuthenticationService, useValue: authenticationServiceMock}
+      ]
     }).compileComponents();
+
   }));
 
   it('should create the app', () => {
@@ -46,5 +54,17 @@ describe('AppComponent', () => {
     expect(button.textContent).toBe("Log in");
   });
 
+  it('should submit credentials on "Log in".', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const compiled = fixture.nativeElement;
+
+    let input = compiled.querySelector('[name="username"]');
+    input.textContent = "user";
+
+    let button = compiled.querySelector('[name="login"]');
+    button.click();
+
+    expect(authenticationServiceMock.requestLogin).toHaveBeenCalledWith("user");
+  });
 
 });
