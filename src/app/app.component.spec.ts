@@ -43,7 +43,7 @@ describe('AppComponent', () => {
     const compiled = fixture.nativeElement;
 
     let button = compiled.querySelector('[name="login"]');
-    expect(button).toBeTruthy();
+    expect(button.textContent).toBe("Log in");
   });
 
 
