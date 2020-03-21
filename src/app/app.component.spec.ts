@@ -28,4 +28,12 @@ describe('AppComponent', () => {
     const compiled = fixture.nativeElement;
     expect(compiled.querySelector('.content span').textContent).toContain('uiKata app is running!');
   });
+
+  it('should contain a user name field, which is limited to 20 characters.', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const compiled = fixture.nativeElement;
+
+    expect(compiled.querySelector('[name="username"]')).toBeTruthy();
+  });
+
 });
