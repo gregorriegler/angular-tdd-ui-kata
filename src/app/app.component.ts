@@ -7,7 +7,7 @@ import { AuthenticationService } from './authentication.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'uiKata';
+  title = 'Login to Clean Code Center';
 
   constructor(private authenticationService: AuthenticationService) {
   }

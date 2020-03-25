@@ -26,14 +26,18 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'uiKata'`, () => {
-    expect(app.title).toEqual('uiKata');
-  });
+  // Window title or page title or border title is "Login to Clean Code Center"
+  describe('Title', () => {
 
-  it('should render title', () => {
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('uiKata app is running!');
+    it(`should have as title 'Login to Clean Code Center'`, () => {
+      expect(app.title).toEqual('Login to Clean Code Center');
+    });
+
+    it('should render title', () => {
+      fixture.detectChanges();
+      const compiled = fixture.nativeElement;
+      expect(compiled.querySelector('.content span').textContent).toContain('Login to Clean Code Center app is running!');
+    });
   });
 
   it('should contain a user name field, which is limited to 20 characters.', () => {
