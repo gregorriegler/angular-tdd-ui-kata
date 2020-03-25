@@ -34,7 +34,8 @@ describe('AppComponent', () => {
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
 
-    expect(compiled.querySelector('.content span').textContent).toContain('Login to Clean Code Center app is running!');
+    expect(compiled.querySelector('.content span').textContent).
+      toBe('Login to Clean Code Center');
   });
 
   it('should contain a user name field, which is limited to 20 characters.', () => {
@@ -49,7 +50,8 @@ describe('AppComponent', () => {
     const compiled = fixture.nativeElement;
 
     const labels: NodeList = compiled.querySelectorAll('label');
-    const userNameLabel = Array.from(labels).find((label) => label.textContent === 'Phone, email or username');
+    const userNameLabel = Array.from(labels).
+      find((label) => label.textContent === 'Phone, email or username');
     const id = (userNameLabel as Element).getAttribute('for');
     const input = compiled.querySelector('[id="' + id + '"]');
     expect(input.name).toBe('username');
