@@ -26,18 +26,15 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  // Window title or page title or border title is "Login to Clean Code Center"
-  describe('Title', () => {
+  it(`should have title 'Login to Clean Code Center'`, () => {
+    expect(app.title).toEqual('Login to Clean Code Center');
+  });
 
-    it(`should have as title 'Login to Clean Code Center'`, () => {
-      expect(app.title).toEqual('Login to Clean Code Center');
-    });
+  it('should render title', () => {
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement;
 
-    it('should render title', () => {
-      fixture.detectChanges();
-      const compiled = fixture.nativeElement;
-      expect(compiled.querySelector('.content span').textContent).toContain('Login to Clean Code Center app is running!');
-    });
+    expect(compiled.querySelector('.content span').textContent).toContain('Login to Clean Code Center app is running!');
   });
 
   it('should contain a user name field, which is limited to 20 characters.', () => {
@@ -48,6 +45,8 @@ describe('AppComponent', () => {
     expect(input.maxLength).toEqual(20);
   });
 
+  // The label "Phone, email or username" is left, next to the input field.
+
   it('should contain "Log in" button in the bottom right corner of the window.', () => {
     const compiled = fixture.nativeElement;
 
@@ -55,16 +54,20 @@ describe('AppComponent', () => {
     expect(button.textContent).toBe('Log in');
   });
 
-  it('should submit credentials on "Log in".', () => {
-    const compiled = fixture.nativeElement;
+  describe('button "Log in" clicked', () => {
+    // User name and password given, button "Log in" clicked, backend reports success, then the form is closed.
 
-    const input = compiled.querySelector('[name="username"]');
-    input.textContent = 'user';
+    it('should submit credentials.', () => {
+      const compiled = fixture.nativeElement;
 
-    const button = compiled.querySelector('[name="login"]');
-    button.click();
+      const input = compiled.querySelector('[name="username"]');
+      input.textContent = 'user';
 
-    expect(authenticationServiceMock.requestLogin).toHaveBeenCalledWith('user');
+      const button = compiled.querySelector('[name="login"]');
+      button.click();
+
+      expect(authenticationServiceMock.requestLogin).toHaveBeenCalledWith('user');
+    });
+
   });
-
 });
