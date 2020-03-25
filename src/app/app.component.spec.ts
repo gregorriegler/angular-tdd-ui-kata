@@ -5,7 +5,7 @@ import { AuthenticationService } from './authentication.service';
 describe('AppComponent', () => {
   let fixture: ComponentFixture<AppComponent>;
   let app: AppComponent;
-  let authenticationServiceMock;
+  let authenticationServiceMock: AuthenticationService;
 
   beforeEach(async(() => {
     authenticationServiceMock = jasmine.createSpyObj(['requestLogin']);
@@ -37,30 +37,27 @@ describe('AppComponent', () => {
   });
 
   it('should contain a user name field, which is limited to 20 characters.', () => {
-    const fixture = TestBed.createComponent(AppComponent);
     const compiled = fixture.nativeElement;
 
-    let input = compiled.querySelector('[name="username"]');
+    const input = compiled.querySelector('[name="username"]');
     expect(input).toBeTruthy();
     expect(input.maxLength).toEqual(20);
   });
 
   it('should contain "Log in" button in the bottom right corner of the window.', () => {
-    const fixture = TestBed.createComponent(AppComponent);
     const compiled = fixture.nativeElement;
 
-    let button = compiled.querySelector('[name="login"]');
+    const button = compiled.querySelector('[name="login"]');
     expect(button.textContent).toBe('Log in');
   });
 
   it('should submit credentials on "Log in".', () => {
-    const fixture = TestBed.createComponent(AppComponent);
     const compiled = fixture.nativeElement;
 
-    let input = compiled.querySelector('[name="username"]');
+    const input = compiled.querySelector('[name="username"]');
     input.textContent = 'user';
 
-    let button = compiled.querySelector('[name="login"]');
+    const button = compiled.querySelector('[name="login"]');
     button.click();
 
     expect(authenticationServiceMock.requestLogin).toHaveBeenCalledWith('user');
