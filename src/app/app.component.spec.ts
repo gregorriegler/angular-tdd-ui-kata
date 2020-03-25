@@ -1,6 +1,6 @@
-import {TestBed, async, ComponentFixture} from '@angular/core/testing';
-import {AppComponent} from './app.component';
-import {AuthenticationService} from "./authentication.service";
+import { TestBed, async, ComponentFixture } from '@angular/core/testing';
+import { AppComponent } from './app.component';
+import { AuthenticationService } from './authentication.service';
 
 describe('AppComponent', () => {
   let fixture: ComponentFixture<AppComponent>;
@@ -14,7 +14,7 @@ describe('AppComponent', () => {
         AppComponent
       ],
       providers: [
-        {provide: AuthenticationService, useValue: authenticationServiceMock}
+        { provide: AuthenticationService, useValue: authenticationServiceMock }
       ]
     }).compileComponents();
 
@@ -50,7 +50,7 @@ describe('AppComponent', () => {
     const compiled = fixture.nativeElement;
 
     let button = compiled.querySelector('[name="login"]');
-    expect(button.textContent).toBe("Log in");
+    expect(button.textContent).toBe('Log in');
   });
 
   it('should submit credentials on "Log in".', () => {
@@ -58,12 +58,12 @@ describe('AppComponent', () => {
     const compiled = fixture.nativeElement;
 
     let input = compiled.querySelector('[name="username"]');
-    input.textContent = "user";
+    input.textContent = 'user';
 
     let button = compiled.querySelector('[name="login"]');
     button.click();
 
-    expect(authenticationServiceMock.requestLogin).toHaveBeenCalledWith("user");
+    expect(authenticationServiceMock.requestLogin).toHaveBeenCalledWith('user');
   });
 
 });
