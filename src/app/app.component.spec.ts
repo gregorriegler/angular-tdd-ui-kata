@@ -45,7 +45,15 @@ describe('AppComponent', () => {
     expect(input.maxLength).toEqual(20);
   });
 
-  // The label "Phone, email or username" is left, next to the input field.
+  it('should contain label "Phone, email or username" left, next to the input field.', () => {
+    const compiled = fixture.nativeElement;
+
+    const labels: NodeList = compiled.querySelectorAll('label');
+    const userNameLabel = Array.from(labels).find((label) => label.textContent === 'Phone, email or username');
+    const id = (userNameLabel as Element).getAttribute('for');
+    const input = compiled.querySelector('[id="' + id + '"]');
+    expect(input.name).toBe('username');
+  });
 
   it('should contain "Log in" button in the bottom right corner of the window.', () => {
     const compiled = fixture.nativeElement;
