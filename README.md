@@ -1,6 +1,6 @@
 # Angular TDD UI kata
 
-TDD a simple UI, a Login form, see [login-form-tdd-ui-kata](https://github.com/SoftDevGang/login-form-tdd-ui-kata): We are creating a Login window/form/web page UI. Full (progressive) requirements are [here](https://github.com/SoftDevGang/login-form-tdd-ui-kata/_Requirements/LoginDialogRequirements.md).
+TDD a simple UI, a Login form, see [login-form-tdd-ui-kata](https://github.com/SoftDevGang/login-form-tdd-ui-kata): We are creating a Login window/form/web page UI. Full (progressive) requirements are [here](https://github.com/SoftDevGang/login-form-tdd-ui-kata/blob/master/_Requirements/LoginDialogRequirements.md).
 
 ## Angular
 
